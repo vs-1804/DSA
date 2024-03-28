@@ -23,13 +23,13 @@ public class Stock {
 	//second approach
   static int maxProfit(int[] arr) {
 	
-	 int max=0;
-	 int min=arr[0];
+	 int profit=0;
+	 int buy=arr[0];
 		for(int i=1;i<arr.length-1;i++) {
-			max=Math.max(max,arr[i]-min);
-			min=Math.min(min,arr[i]);
+			max=Math.max(profit,arr[i]-buy);
+			min=Math.min(buy,arr[i]);
 		}
-		return max;	
+		return profit;	
 	}
 	public static void main(String[] args) {
 		int[] arr= {7,2,5,1,2};
