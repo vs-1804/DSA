@@ -2,7 +2,7 @@ package com.java;
 import java.util.ArrayList;
 import java.util.List;
 
-public class QUEST6 {//generate all permutation
+public class QUEST6 {//generate all permutation of array/string using extra space
 	
 	public static void main(String[] args) {
 		int[] arr= {1,2,3};
