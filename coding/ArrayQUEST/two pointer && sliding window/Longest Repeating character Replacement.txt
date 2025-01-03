@@ -1,0 +1,43 @@
+// brute force O(N^2)
+ public int characterReplacement(String s, int k) {
+        int maxlen=0; 
+        
+        for(int i=0;i<s.length();i++){
+            int maxfeq=0;
+            int[] hash= new int[26];
+            for( int j=i;j<s.length();j++){
+                 hash[s.charAt(j)-'A']++;
+                 maxfeq=Math.max(maxfeq, hash[s.charAt(j)-'A']);
+                 int changes=(j-i+1)-maxfeq;
+                 if(changes<=k){
+                    maxlen=Math.max(maxlen,j-i+1);
+                 }
+                 else{
+                    break;
+                 }
+            }
+        }
+        return maxlen;
+    }
+
+// optimal O(N)
+ public int characterReplacement(String s, int k) {
+        int maxlen=0; int l=0;int r=0;
+	        int[] hash= new int[26];
+	        int maxfeq=0;
+	       while(r<s.length()) {
+	    	   hash[s.charAt(r)-'A']++;
+	    	   maxfeq=Math.max(maxfeq, hash[s.charAt(r)-'A']);
+	    	   int changes=(r-l+1)-maxfeq;
+	    	   if(changes<=k) {
+	    		   maxlen=Math.max(maxlen,r-l+1);
+	    	   }
+	    	   if(changes>k) {
+	    		   hash[s.charAt(l)-'A']--;
+	    		   l++;
+	    	   }
+	    	   r++;
+	        }
+	        return maxlen;
+			
+    }

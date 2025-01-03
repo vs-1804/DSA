@@ -1,0 +1,21 @@
+private static void totalFruit(int[] arr) {
+		 int maxfruits=0; int l=0; int r=0;
+		 Map<Integer, Integer> st= new HashMap<>();
+			while(r<arr.length) {
+				st.put(arr[r], st.getOrDefault(arr[r], 0)+1);
+				if(st.size()>2) {
+			      st.put(arr[l], st.get(arr[l])-1);
+					if(st.get(arr[l])==0) {
+						st.remove(arr[r]);
+					}
+					l++;	
+				}
+				if(st.size()<=2) {
+				maxfruits=Math.max(maxfruits, r-l+1);
+				}
+				r++;
+				
+			}
+		 
+		System.out.println(maxfruits);
+	}

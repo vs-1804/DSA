@@ -1,0 +1,38 @@
+/// O(n^2)   time limit exceed for big input
+ public int numberOfSubstrings(String str) {
+         int count=0; int l=0; int r=0;
+		for( int i=0;i<str.length();i++) {
+			int[] hash= new int[3];
+			for( int j=i;j<str.length();j++) {
+		          hash[str.charAt(j)-'a']=1;
+				if(hash[0]+hash[1]+hash[2]==3) {
+                                        // after this all substring is valid
+					count= count+str.lenght()-j;
+                                        break;
+				}
+			}
+			
+		}
+        return count;
+    }
+
+// start looking back from first substring satisfy condition: O(N)
+public int numberOfSubstrings(String str) {
+          int count=0;  int r=0;
+		 int[] lastseen= new int [3];
+		 Arrays.fill(lastseen, -1);
+		  while(r<str.length()) {
+			 lastseen[str.charAt(r)-'a']=r;
+				 if(lastseen[0]!=-1 && lastseen[1]!=-1 && lastseen[2]!=-1) {
+					int min=Integer.MAX_VALUE;
+					for( int x : lastseen) {
+						if(x<min) {
+							min=x;
+						}
+					}
+					count=count+min+1;
+				}
+			  r++;
+		    }
+        return count;
+    }

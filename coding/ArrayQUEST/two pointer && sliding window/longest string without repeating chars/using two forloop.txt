@@ -1,0 +1,15 @@
+ int maxlen=0;
+		for(int i=0;i<str.length();i++) {
+			int[] hash= new int[255];
+			for( int j=i;j<str.length();j++) {
+				int val=str.charAt(j);
+				if(hash[val]==1) {
+					break;
+				}
+				hash[val]=1;
+				maxlen=Math.max(maxlen, j-i+1);
+			}
+		
+		 }
+		System.out.println(maxlen);
+	

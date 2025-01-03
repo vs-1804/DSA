@@ -1,0 +1,21 @@
+// using two pointer and hashing
+	
+private static void longSubString(String str) {
+		 int maxlen=0;
+		 int[] hash= new int[256];
+		 Arrays.fill(hash, -1);
+		 int l=0; int r=0;
+		 while(r<str.length()) {
+			
+			 if(hash[str.charAt(r)]!=-1) {
+				 if(hash[str.charAt(r)]>=l) {
+					 l=hash[str.charAt(r)]+1;
+				 }
+			 }
+			maxlen=Math.max(maxlen, r-l+1);
+			hash[str.charAt(r)]=r;
+			r++;
+	 
+		 }
+		System.out.println(maxlen);
+	}

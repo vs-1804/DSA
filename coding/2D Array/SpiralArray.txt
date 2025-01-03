@@ -1,0 +1,31 @@
+//just simulate the problem;
+static void spiralPrint(int[][] arr) {
+		int count=0; int row=arr.length;int col=arr[0].length;int total=row*col;
+		int rowStart=0;int rowEnd=row-1;
+		int colStart=0;int colEnd=col-1;
+		
+		while(count<total) {
+			for(int index=colStart;index<=colEnd&&count<total;index++) {
+				System.out.print(arr[rowStart][index]);
+				count++;
+			}
+			rowStart++;
+			for(int index=rowStart;index<=rowEnd&&count<total;index++) {
+				System.out.print(arr[index][colEnd]);
+				count++;
+			}
+			colEnd--;
+			for(int index=colEnd;index>=colStart&&count<total;index--) {
+				System.out.print(arr[rowEnd][index]);
+				count++;
+			}
+			rowEnd--;
+			for(int index=rowEnd;index>=rowStart&& count<total;index--) {
+				System.out.print(arr[index][colStart]);
+				count++;
+			}
+			colStart++;
+		}
+		
+		
+	}

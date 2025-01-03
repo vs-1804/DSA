@@ -1,0 +1,22 @@
+//First transpose then reverse columns 
+private static void transposePrint(int[][] arr) {
+		int row=arr.length;int col=arr.length;
+		for(int i=0;i<row;i++) {
+			for(int j=i+1;j<col;j++) {
+				int temp=arr[i][j];
+				arr[i][j]=arr[j][i];
+				arr[j][i]=temp;	
+			}
+		}
+		for(int i=0;i<row;i++) {
+			int start=0; int end=col-1;
+			while(start<end) {
+				int temp=arr[i][start];
+				arr[i][start]=arr[i][end];
+				arr[i][end]=temp;
+				start++;
+				end--;
+			}
+		}
+		
+	}

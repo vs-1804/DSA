@@ -1,0 +1,18 @@
+  public int subarraySum(int[] nums, int k) {
+  	 int count=0;
+	        Map<Integer,Integer> map= new HashMap<>();
+	       // prefSum[0]=nums[0];
+	     map.put(0, 1);
+	        int prefSum=0;
+	        for(int j=0;j<nums.length;j++){
+	        	prefSum=prefSum+nums[j];
+	            int val=prefSum-k;
+	            if(map.containsKey(val)){
+	                int x=map.get(val);
+	                count+=x;
+	            }
+	            map.put(prefSum , map.getOrDefault(prefSum,0)+1);      
+	            }
+	       return count;
+		}
+      

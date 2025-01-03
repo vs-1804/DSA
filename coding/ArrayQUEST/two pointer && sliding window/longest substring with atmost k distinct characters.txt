@@ -1,0 +1,56 @@
+/// O(N^2)
+private static void subString(String str, int k) {
+		 int maxlen=0; int l=0; int r=0;
+			for( int i=0;i<str.length();i++) {
+				Set<Character> st= new HashSet<Character>();
+				for(int j=i;j<str.length();j++){
+					st.add(str.charAt(j));
+					if(st.size()>k) break;
+					maxlen=Math.max(maxlen, j-i+1);
+				}
+			}
+		 
+		System.out.println(maxlen);
+	}
+
+// O(2N)
+private static void subString(String str, int k) {
+		 int maxlen=0; int l=0; int r=0;
+		HashMap<Character, Integer> hash= new HashMap<Character, Integer>();
+		while(r<str.length()) {
+			hash.put(str.charAt(r), hash.getOrDefault(str.charAt(r), 0)+1);
+			while(hash.size()>k) {
+				hash.put(str.charAt(l), hash.get(str.charAt(l))-1);
+				if(hash.get(str.charAt(l))==0) {
+					hash.remove(str.charAt(l));
+				}
+				l++;
+			}
+			maxlen=Math.max(maxlen, r-l+1);
+			r++;
+		}
+				
+		 
+		System.out.println(maxlen);
+	}
+
+//O(N)
+	private static void subString(String str, int k) {
+		 int maxlen=0; int l=0; int r=0;
+		HashMap<Character, Integer> hash= new HashMap<Character, Integer>();
+		while(r<str.length()) {
+			hash.put(str.charAt(r), hash.getOrDefault(str.charAt(r), 0)+1);
+			if(hash.size()>k) {
+				hash.put(str.charAt(l), hash.get(str.charAt(l))-1);
+				if(hash.get(str.charAt(l))==0) {
+					hash.remove(str.charAt(l));
+				}
+				l++;
+			}
+			if(hash.size()<=k) {
+			maxlen=Math.max(maxlen, r-l+1);
+			}
+			r++;
+		} 
+		System.out.println(maxlen);
+	}

@@ -1,0 +1,18 @@
+// check every window expand from right and strink from left.
+
+private static void longSubarray(int[] arr , int target) {
+		 int ans=0; int count=0;
+		 int l=0; int r=0; int sum=0;
+		 while(r<arr.length) {
+			 sum=sum+arr[r];
+			 while(sum>target) {
+				 sum=sum-arr[l];
+				 l++;
+			 }
+			 if(sum<=target) {
+				 ans=Math.max(ans, r-l+1);
+			 }
+			 r++;
+		 }
+	System.err.println(ans);
+	}

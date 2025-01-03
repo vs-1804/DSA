@@ -1,0 +1,18 @@
+private static boolean binarySearch(int[][] arr ,int target) {
+		int row=arr.length; int col=arr[0].length;
+		int rowStart=0; int colEnd =col-1;
+		
+		while(rowStart<row && colEnd>=0) {
+			int ele= arr[rowStart][colEnd];
+			if(ele==target) {
+				return true;
+			}
+			else if(ele>target) {
+				colEnd--;
+			}
+			else
+			{ rowStart++;}
+		}
+		return false;
+		
+	}
